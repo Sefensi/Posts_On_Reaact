@@ -6,8 +6,9 @@ const MyButton = (props) => {
     <button
       {...props}
       className={classes.myBtn}
-    >{props.children}
-     </button>
+    >
+      {props.children}
+    </button>
   );
 };
 
