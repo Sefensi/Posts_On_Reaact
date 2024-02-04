@@ -1,17 +1,21 @@
-import React, { useRef, useState, StrictMode } from "react";
-// import Counter from "./components/Counter";
-// import ClassCounter from "./components/ClassCounter";
+import React, { useState } from "react";
 import "./styles/App.css";
 
 import PostList from "./components/PostList";
 
 import PostForm from "./components/PostForm";
+import MySelect from "./components/UI/select/MySelect";
+import MyInput from "./components/UI/input/MyInput";
 function App() {
   const [posts, setPosts] = useState([
-    { id: Date.now(), title: "Javascript", body: "Description" },
-    { id: Date.now() + 1, title: "Javascript 2", body: "Description" },
-    { id: Date.now() + 2, title: "Javascript 3", body: "Description" },
+    { id: Date.now(), title: "aaa", body: "lsdadaf" },
+    { id: Date.now() + 1, title: "ccccc 2", body: "zxcq" },
+    { id: Date.now() + 2, title: "jjjjj 3", body: "qqasdqe" },
   ]);
+  const [selectedSort, setSelectedSort] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const sortedPosts = ''
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
@@ -22,9 +26,31 @@ function App() {
     setPosts(posts.filter((p) => p.id !== post.id));
   };
 
+  const sortPosts = (sort) => {
+    setSelectedSort(sort);
+    setPosts();
+  };
+
   return (
     <div className="App">
       <PostForm create={createPost} />
+      <hr style={{ margin: "15px 0" }} />
+      <div>
+        <MyInput
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search..."
+        />
+        <MySelect
+          value={selectedSort}
+          onChange={sortPosts}
+          defaultValue="Sort by"
+          options={[
+            { value: "title", name: "By name" },
+            { value: "body", name: "By description" },
+          ]}
+        />
+      </div>
       {posts.length ? (
         <PostList
           remove={removePost}
