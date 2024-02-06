@@ -14,10 +14,11 @@
 .post {
   display: flex;
   padding: 15px;
-  border: 2px solid teal;
+  border: 2px solid darkslateblue;
   margin-top: 15px;
   justify-content: space-between;
   align-items: center;
+ 
 }
 
 .post-enter {
@@ -33,4 +34,15 @@
 .post-exit-active {
   transform: translateX(-1000px);
   transition: all 150ms ease-in;
+}
+.page__wrapper {
+  margin-top: 30px;
+  display: flex;
+}
+.page {
+  padding: 10px;
+  border: 1px solid darkslateblue;
+  cursor: pointer;
+  border-radius: 10%;
+  margin: 1px;
 }
